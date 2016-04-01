@@ -12,6 +12,7 @@ html {
 }
 body {
   margin: 0;
+
 }
 article,
 aside,
@@ -896,6 +897,7 @@ th {
 }
 html {
   font-size: 10px;
+    background-color: #000;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -4624,6 +4626,7 @@ a.badge:focus {
   margin-bottom: 30px;
   color: inherit;
   background-color: #eee;
+
 }
 .jumbotron h1,
 .jumbotron .h1 {

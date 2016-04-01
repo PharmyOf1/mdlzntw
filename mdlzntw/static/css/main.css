@@ -3,16 +3,99 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-.jumbotron h1 {
-    color: rgba(200, 50, 255, 1);
+.white_inject{
+	  color: #FFF;
 }
 
 
+.jumbotron h1 {
+    color: #551A8B;
+}
+
+.jumbotron h2 {
+    color: #551A8B;
+    margin-top:0px;
+    margin-bottom:-20px;
+}
+
+.jumbotron hr {
+    border-color: #000;
+}
 
 
+.purpleBar {
+	padding-top:6px;
+
+	width: 100%;
+	background-color:#551A8B;
+	text-align:center;
+	color:#FFF;
+}
+
+.purpleBar h3 {
+	color:#FFF;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.purpleBar h5 {
+	color:#FFF;
+}
+
+.purpleBar img {
+	width:30px;
+	height:30px;
+}
+
+.jumboImage {
+	background-image: url("https://www.mongodb.org/assets/home/moon-bg-f9d4dee2fce26d425a624b0e6495b13774f91891bf6afdec9c3b59b45600b7ef.png");
+	background-size: 75%;
+	background-color: #FFF;
+	background-repeat: no-repeat;
+	background-position: right bottom; 
+}
+
+.mdlz_bg {
+	background-color: #FFF;
+	background-size: 100%;
+	width:100%;
+	height:600px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.82),
+      rgba(0, 0, 0, 0.82)
+    ),
+    url(http://www.trbimg.com/img-55567320/turbine/ct-mondelez-chicago-plant-0516-biz-20150515);
+}
+
+.center_white {
+	color: #FFF;
+	margin: 0 auto;
+	font-size: 30px;
+	text-align: center;
+	background-color: #551A8B;
+	width:50%;
+}
+
+#high_chart {
+padding-top:15px;
+padding-bottom:15px;
+
+}
+
+#dashView1 {
 
 
+}
 
+#dashView2 {
+
+}
+
+#dashView3 {
+
+}
 
 
 

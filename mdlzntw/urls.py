@@ -21,10 +21,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 #
 
-from .views import home
+from .views import home, network, schedule, bisccfr, blackout, demand, ac, bakeries
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='home'),
+    url(r'^network', network, name='network'),
+    url(r'^schedule', schedule, name='schedule'),
+    url(r'^bisccfr', bisccfr, name='bisccfr'),
+    url(r'^blackout', blackout, name='blackout'),
+    url(r'^demand', demand, name='demand'),
+    url(r'^ac', ac, name='ac'),
+    url(r'^bakeries', bakeries, name='bakeries'),
 ]
 
