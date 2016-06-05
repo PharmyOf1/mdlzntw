@@ -6,4 +6,5 @@ production.py
 development.py
 testing.py
 cr.py
+media
 *.pyc
