@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block head_title %}{% endblock %}</title>
+    </head>
+
+    <body>
+
+
+
+        <!-- Upload form-->
+        <form action="{% url "submittemplate" %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+                    <select name="selected_bakery_name">
+                            {% for bakery in bakery_names %}
+                                {% if bakery == user.name %}
+                                    <option selected={{bakery}}>{{bakery}}</option>
+                                {%else%}
+                                    <option>{{bakery}}</option>
+                                {%endif%}
+                            {% endfor %}
+                    </select>
+
+
+
+                    <select name="selected_template_year">
+                            {% for year in template_year %}
+                                {% if year == this_year %}
+                                    <option selected={{year}}>{{year}}</option>
+                                {%else%}
+                                    <option>{{year}}</option>
+                                {%endif%}
+                            {% endfor %}
+                    </select>
+
+        
+                    <select name="selected_sub_month">
+                            {% for month in cal_months %}
+                                {% if month == this_month %}
+                                    <option selected={{month}}>{{month}}</option>
+                                {%else%}
+                                    <option>{{month}}</option>
+                                {%endif%}
+                            {% endfor %}
+                    </select>
+
+
+                    <p>{{ file_form.docfile }}</p>
+    
+
+            <p><input type="submit" value="Upload Template"/></p>
+        
+        </form>
+    </body>
+
+</html>

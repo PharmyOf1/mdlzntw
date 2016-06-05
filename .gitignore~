@@ -2,5 +2,4 @@ db.sqlite3
 __pycache__
 secrets.py
 base.py
-cr.py
 *.pyc
