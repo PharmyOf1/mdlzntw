@@ -47,6 +47,14 @@ padding-bottom:15px;
 
 }
 
+.step_box {border-top:1px;border-left:0px;border-right:0px;border-bottom:0px; border-style:solid; padding-top:20px;}
+
+.contain_uploader{margin:0 auto; border:0px; border-style:solid; width:50%;}
+
+.color_changer {color:green; margin: 0 auto; margin-bottom:-25px; font-weight:bold;}
+
+.or_view {margin-top:-25px; font-weight:bold;}
+
 
 /* ==========================================================================
    Blackout Map Custom Divs

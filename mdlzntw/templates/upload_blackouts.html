@@ -1,19 +1,31 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>{% block head_title %}{% endblock %}</title>
-    </head>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_title %}MDLZ Supply Login{% endblock %}
+{% block content %}
+
+
+
 
     <body>
+    <div class="container">
 
+        <div class="row mt centered">
+            <div class="add_space_top">
+                            <center><FORM><INPUT Type="button" VALUE="Back to Bakeries" onClick="history.go(-1);return true;"></INPUT></FORM></center>
 
+            <h1> Upload Template</h1><br>
 
         <!-- Upload form-->
-        <form action="{% url "submittemplate" %}" method="post" enctype="multipart/form-data">
+       <div class="contain_uploader"> <form action="{% url "submittemplate" %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-                    <select name="selected_bakery_name">
+                    <div class="color_changer">Step 1:</div> <br>Locate excel template.</br>
+                                        <div class="step_box"><center><p>{{ file_form.docfile }}</p></center></div>
+
+                    
+
+                    <div class="color_changer">Step 2:</div> <br>Select correct dropdown values.</br>
+                   <div class="step_box"> <select name="selected_bakery_name">
                             {% for bakery in bakery_names %}
                                 {% if bakery == user.name %}
                                     <option selected={{bakery}}>{{bakery}}</option>
@@ -44,15 +56,18 @@
                                     <option>{{month}}</option>
                                 {%endif%}
                             {% endfor %}
-                    </select>
+                    </select></div>
 
+<br></br>
 
-                    <p>{{ file_form.docfile }}</p>
-    
+            <div class="color_changer">Step 3:</div> <br>Verify all inputs looks right.</br>
 
-            <p><input type="submit" value="Upload Template"/></p>
+            <div class="step_box"><p>            
+            <br><label><input type="checkbox" name="checkbox" value="value">I have verified that all information is correct.</label><br><input type="submit" value="Upload Template"/></p></div>
         
-        </form>
+        </form></div>
+
+        {% endblock %}
     </body>
 
 </html>

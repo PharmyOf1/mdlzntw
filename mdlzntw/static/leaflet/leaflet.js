@@ -3803,9 +3803,9 @@ function set_points(map_name,zoomL) {
 global_points =[];
 
 function generate_map() {
-        var map = L.map('map').setView([40.28, -90.45], 4);
-        var southWest = L.latLng(25.28, -90.45),
-            northEast = L.latLng(40.774, -74.125),
+        var map = L.map('map').setView([25.698367, -100.227740], 4);
+        var southWest = L.latLng(20, -105),
+            northEast = L.latLng(48, -88),
             bounds = L.latLngBounds(southWest, northEast);
 
         L.tileLayer('https://api.mapbox.com/styles/v1/pharmyof1/cir0unvt0000ibom4z6vz0zl9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGhhcm15b2YxIiwiYSI6ImNpcjBzZzgzZzAycjBmcG1ndmU4bXM3bXkifQ.Zamu6kKbdoejvSf3auV7Pw', {
