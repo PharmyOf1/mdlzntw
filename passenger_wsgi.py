@@ -1,5 +1,5 @@
 import sys, os
-INTERP = "/home/phihar23/mdlzsupply.com/data/bin/python"
+INTERP = "/home/phihar23/.pyenv/versions/anaconda3-4.0.0/bin/python"
 #INTERP is present twice so that the new python interpreter knows the actual executable path
 if sys.executable != INTERP: os.execl(INTERP, INTERP, *sys.argv)
 

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_title %}MDLZ Supply Login{% endblock %}
+{% block content %}
+
+
+
+
+    <body>
+    <div class="container">
+        <div class="row mt centered">
+            <div class="add_space_top">
+            
+            <h1> {{bakery}}: Template Download</h1><br><center><FORM><INPUT Type="button" VALUE="Back to Bakeries" onClick="history.go(-1);return true;"></FORM></center><h3>Select version to download</h3> 
+
+                <center><table cellspacing='0'>
+        <tr><th>Link</th><th>Bakery</th><th>Template</th><th>Last Update</th></tr>
+            <tbody>
+
+        {% for row in docs %}
+        {%if row.bakery == bakery %}
+        <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+        
+        <td>
+
+        
+        <form action="{% url "filedownload" %}" method="post">{% csrf_token %}
+                    <button name="template_file" value="{{row.template_file}}">Download</button>
+        </form>
+        </td>
+        
+        <td>{{row.bakery}}</td><td>{{row.temp_year}}</td><td>{{row.upload_date}}</td></tr>
+
+        {% endif %}
+        {% endfor %}
+        </tbody>
+        </table></center>
+
+</div>
+</div>
+</div>
+{% endblock %}
+    </body>
+}
+</html>
+
+
+
+
+
+
+
+
+

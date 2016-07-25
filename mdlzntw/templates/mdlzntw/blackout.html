@@ -1,24 +1,90 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Upload Template</title>
-    </head>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_title %}MDLZ Supply Login{% endblock %}
+{% block content %}
+
 
     <body>
 
+        <div class="container">
+        <div class="row mt centered">
+            <div class="add_space_top">
+                <div class="col-lg-6 col-lg-offset-3">
+                                <h1>Blackout Shifts Viewer</h1>
+                                <a href="/blackout/submittemplate">Upload New Template</a>
+                                <br><a href="/blackout/dltemplate">Download Excel Template</a></br>
+                                <br><h3>Select filters below.</br></h3>
 
+                    <form action="{% url "blackout" %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
 
-        <!-- Upload form-->
-        <form action="{% url "blackout" %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-
-                    <p>{{ file_form.docfile }}</p>
-    
-
-            <p><input type="submit" value="Upload Blackout Template"/></p>
+                        <p><select multiple name='bakery_filter'>
+                                    {% for bakery in u_bakeries %}
+                                        <option value='{{bakery}}'>{{bakery}}</option>
+                                    {% endfor %}
+                        </select>
+                        <select multiple name='line_filter'>
+                                    {% for line in u_lines %}
+                                        <option value='{{line}}'>{{line}}</option>
+                                    {% endfor %}
+                        </select>
+                        <select multiple name='year_filter'>
+                                    {% for year in u_years %}
+                                        <option value={{year}}>{{year}}</option>
+                                    {% endfor %}
+                        </select>
+                        <select multiple name='month_filter'>
+                                    {% for month in u_months%}
+                                        <option value='{{month}}'>{{month}}</option>
+                                    {% endfor %}
+                        </select>
+                        <select multiple name='week_filter' >
+                                    {% for week in u_weeks %}
+                                        <option value={{week}}>{{week}}</option>
+                                    {% endfor %}
+                        </select></p>
+                        <input type="submit" value="-Filter Selection-"/></p>
         
-        </form>
-    </body>
+                    </form>
 
+        <!-- Weeks-->
+            <table cellspacing='0'>
+                <tr><th>Bakery</th><th>Line</th><th>Month</th><th>Week</th><th>Shifts</th><th>Last Update</th></tr>
+                    <tbody>
+                        {% for row in on_load %}
+                            {% if row.7 in fin_months %}
+                        <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                        <td>{{row.0}}</td><td>{{row.1}}</td><td>{{row.7}}</td><td>{{row.3}}</td><td>{{row.2}}</td><td>{{row.4}}</td></tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+            </table>
+
+                </div>
+            </div>
+            </div>
+        </div><!-- /row -->
+
+  
+    <div class="container">
+        <hr>
+        <div class="row centered">
+            <div class="col-lg-6 col-lg-offset-3">
+                <form class="form-inline" role="form">
+                  <div class="form-group">
+                    <h3>Request Upload/Download Access</h3>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-Mail Address">
+                    <button type="submit" class="btn btn-warning btn-lg">Send Request</button>
+                    <p></p>
+                  </div>
+
+                </form>                 
+            </div>
+        </div>
+        </div>
+
+
+{% endblock %}
+
+  </body>
 </html>

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_title %}MDLZ Supply Login{% endblock %}
+{% block content %}
+
+
+
+<div class="container">
+    <body>
+
+          <div class="row mt centered">
+            <div class="add_space_top">
+                <div class="col-lg-6 col-lg-offset-3">
+                                <h1>Biscuit Blackout Information</h1>
+                </div>
+            </div>
+          
+       <div class="col-lg-6 col-lg-offset-3" style="margin-top:-40px">
+                                <br><h3>Select Bakery For Details.</br></h3></div>
+          </div>
+
+                
+  <div id="map"></div>
+
+  <script>
+        generate_map();
+  </script>
+
+    <div class="row">
+        
+    <a href="/blackout/atlanta">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Atlanta">Atlanta</div>
+        </div>
+    </a>
+    <a href="/blackout/fairlawn">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Fairlawn">Fairlawn</div>
+            </div>
+     </a>
+    <a href="/blackout/richmond">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Richmond">Richmond</div>
+            </div>
+        </a>
+    <a href="/blackout/portland">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Portland">Portland</div>
+            </div>
+    </a>
+    <a href="/blackout/naperville">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Naperville">Naperville</div>
+            </div>
+    </a>
+    <a href="/blackout/chicago">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Chicago">Chicago</div>
+            </div>
+    </a>
+    <a href="/blackout/salinas">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Salinas">Salinas</div>
+            </div>
+    </a>
+    <a href="/blackout/monterrey">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Monterrey">Monterrey</div>
+            </div>
+    </a>
+    <a href="/blackout/eastyork">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Eastyork">East York</div>
+            </div>
+    </a>
+    <a href="/blackout/scarborough">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Scarborough">Scarborough</div>
+        </div>
+    </a>
+    <a href="/blackout/montreal">
+        <div class="col-md-1 ">
+            <div id="hold_bakery_title" name="Montreal">Montreal</div>
+            </div>
+    </a>
+        
+    </div>
+
+        <div class="container">
+        <hr>
+        <div class="row centered">
+            <div class="col-lg-6 col-lg-offset-3">
+                <form class="form-inline" role="form">
+                  <div class="form-group">
+                    <h3>Request Upload/Download Access</h3>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-Mail Address">
+                    <button type="submit" class="btn btn-warning btn-lg">Send Request</button>
+                    <p></p>
+                  </div>
+
+                </form>                 
+            </div>
+        </div>
+        </div>
+
+
+{% endblock %}
+    </body> </div>
+}
+</html>
+
+
+
+
+
+
+
+
+

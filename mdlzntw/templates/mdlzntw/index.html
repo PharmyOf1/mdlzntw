@@ -1,2 +1,78 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block head_title %}MDLZ Network{% endblock %}
+{% block content %}
+
+
+    <body>
+    <div class="jumboImage">
+          <div class="container">
+    <div class="jumbotron">
+
+        <h2><b>Supply Planning Hub</b> <font size="5">1.1</font></h2>
+        <h1><b>MDLZ</b> Biscuit Networks</h1> 
+        <p><a class="btn btn-primary btn-lg centered" href="networks" role="button">Show Networks</a></p>
+        <hr>
+      </div>
+    </div>
+    </div>
+   
+<!-- Begin Content under Jumbo -->
+    <div class="container">
+
+
+              <div id="high_chart"></div>
+
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4 dash ">
+          <div id="dashView1"></div>
+    
+        </div>
+        <div class="col-md-4">
+          <div id="dashView2"></div>
+       </div>
+        <div class="col-md-4">
+        <div id="dashView3"></div>
+        </div>
+        <div class="col-md-4 white_inject">
+          <h2>Top 10 Cuts</h2>
+          <p>Cut 1</p>
+          <p>Cut 2</p>
+          <p>Cut 3</p>
+          <p>Cut 4</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4 white_inject">
+          <h2>AC YTD</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Bakery Metrics</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+
+
+
+   </div> <!-- /container -->
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="static/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'highcharts/js/highcharts.js' %}"></script>
+        <script src="{% static 'highcharts/js/custom_views.js' %}"></script>
+
+
+
+<style type="text/css">
+   body { background: #000 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+</body>
+{% endblock %}
