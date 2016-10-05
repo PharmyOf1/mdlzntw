@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.http import HttpResponse
 
@@ -23,7 +23,8 @@ def login_user(request):
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect('/')
-    return render_to_response('mdlzntw/login.html', context_instance=RequestContext(request))
+    #return render_to_response('mdlzntw/login.html', context_instance=RequestContext(request))
+    return render(request,'mdlzntw/login.html')
 
 
 @login_required(login_url='/login')
@@ -52,4 +53,3 @@ def test(request):
 
 				}
 	return render(request, "mdlzntw/test.html", test_dict)
-

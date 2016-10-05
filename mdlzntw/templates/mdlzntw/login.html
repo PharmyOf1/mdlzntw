@@ -2,10 +2,20 @@
 {% load staticfiles %}
 {% block head_title %}MDLZ Supply Login{% endblock %}
 {% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+
+
+    <body>
+    <div class="container">
+
+        <div class="row mt centered">
+            <div class="add_space_top">
+
+            <h1> Access Denied</h1>
+            <h3> Log In to Continue</h3>
+      </div>
     
-<body>
-
     <div class="winCon">
         <div id="login">
             <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
@@ -25,16 +35,22 @@
                    <input type="password" name="password" id="password" placeholder="Password">
                </div>
          </div>
-         <div class="control-group">
+         
+         <p><div class="control-group">
              <div class="controls">
                     <button type="submit" class="btn">Login</button>
                 </div>
-            </div>
+            </div></p>
          </form>
         </div>
     </div>
 
 
-</body>
+
+</div>
+</div>
 
 {% endblock %}
+
+</body>
+

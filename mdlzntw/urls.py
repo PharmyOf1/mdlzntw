@@ -1,4 +1,4 @@
-from django.conf.urls import url,patterns,include
+from django.conf.urls import url, include
 from django.contrib import admin
 
 #Docs
@@ -17,5 +17,3 @@ urlpatterns = [
     url(r'^blackout/', include('apps.blackout.urls')),
     url(r'^login', login_user, name='login_user')
     ]
-
-

@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.db import connection
+from django.contrib.auth.decorators import login_required
 
 from apps.blackout.models import Document
 from apps.blackout.models import Blackouts
@@ -124,9 +125,9 @@ def submittemplate(request):
     
 
 
+@login_required(login_url='/login')
 def dltemplate(request):
     docs = Document.objects.all().order_by('bakery','-upload_date')
-    print (docs)
     t_tags = {'docs':docs}
 
     if request.method == 'POST':
@@ -148,12 +149,18 @@ def filedownload(request):
         return render(request, 'mdlzntw/blackout/dltemplate.html')
 
 
+
+@login_required(login_url='/login')
 def blackout_new(request):
     t_tags = {}
     return render(request, 'mdlzntw/blackoutmapmain.html',t_tags)
 
+
+
+@login_required(login_url='/login')
 def indy_bakery(request):
     docs = Document.objects.all().order_by('bakery','-upload_date')
+
     bakery_name = ''.join([x for x in (str(request).split('/')[-1]) if x.isalpha()])
     
     bake_dict = {

@@ -19,7 +19,7 @@
             <h3>Select version to download</h3> 
 
                 <center><table cellspacing='0'>
-        <tr><th>Link</th><th>Bakery</th><th>Template</th><th>Last Update</th></tr>
+        <tr><th>Link</th><th>Bakery</th><th>Template</th><th>Updated</th><th>Uploader</th></tr>
             <tbody>
 
         {% for row in docs %}
@@ -34,7 +34,7 @@
         </form>
         </td>
         
-        <td>{{row.bakery}}</td><td>{{row.temp_year}}</td><td>{{row.upload_date}}</td></tr>
+        <td>{{row.bakery}}</td><td>{{row.temp_year}}</td><td>{{row.upload_date}}</td><td>{{row.uploader}}</td></tr>
 
         {% endif %}
         {% endfor %}

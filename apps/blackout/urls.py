@@ -1,10 +1,10 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import blackout, submittemplate
 from apps.blackout.views import dltemplate, filedownload, indy_bakery, blackout_new
 #from apps.blackout.views import richmond,fairlawn,atlanta,portland,chicago,naperville,salinas,monterrey,eastyork,scarborough,montreal
 
-urlpatterns = patterns('blackout.views',
+urlpatterns = [
 	url(r'^$', blackout_new, name="blackout"),
 	url(r'^dltemplate', dltemplate, name="dltemplate"),
 	url(r'^filedownload', filedownload, name="filedownload"),
@@ -20,4 +20,4 @@ urlpatterns = patterns('blackout.views',
     url(r'^eastyork', indy_bakery, name="eastyork"),
     url(r'^scarborough', indy_bakery, name="scarborough"),
     url(r'^montreal', indy_bakery, name="montreal")
-)
+]

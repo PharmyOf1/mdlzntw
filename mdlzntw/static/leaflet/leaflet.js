@@ -3790,6 +3790,20 @@ function set_points(map_name,zoomL) {
             bakery_locs=[];
             if (zoomL==4) {zoomL=.8;}; 
             if (zoomL==5) {zoomL=1.3;};
+            if (zoomL==6) {zoomL=2;};
+            if (zoomL==7) {zoomL=2.5;};
+            if (zoomL==8) {zoomL=3;};
+            if (zoomL==9) {zoomL=3.8;};
+            if (zoomL==10) {zoomL=5;};
+            if (zoomL==11) {zoomL=10;};
+            if (zoomL==12) {zoomL=50;};
+            if (zoomL==13) {zoomL=100;};
+            if (zoomL==14) {zoomL=250;};
+            if (zoomL==15) {zoomL=500;};
+            if (zoomL==16) {zoomL=10000;};
+            if (zoomL==17) {zoomL=20000;};
+            if (zoomL==18) {zoomL=100000;};
+
             for (i=0;i<points.length;i++) {
                 var new_m = point_gen(points[i],100000/zoomL);
                     new_m.bindPopup(points[i][2]);
