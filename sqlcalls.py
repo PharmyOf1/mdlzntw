@@ -15,7 +15,7 @@ dates_2018 = list(itertools.chain.from_iterable([[x[0],x[4],x[8]] for x in list(
 
 print (dates_2016)
 #Stupid CASE Week Injection....figure out a better way later
-sql_case_for_week = """                    
+sql_case_for_week = """
                     CASE
                         WHEN week_date < '{}' THEN 'Month 01'
                         WHEN week_date < '{}' THEN 'Month 02'
@@ -72,9 +72,9 @@ sql_case_for_week = """
 
 def main_blackout_call(bakery_filter,line_filter,year_filter,week_filter):
     week_sql = """
-                SELECT 
+                SELECT
                 blackout_blackouts.Bakery,
-                blackout_blackouts.line_name, 
+                blackout_blackouts.line_name,
                 21-sum(blackout_blackouts.shifts) as Avail,
                 blackout_blackouts.week_date,
                 blackout_blackouts.upload_date,
@@ -83,10 +83,10 @@ def main_blackout_call(bakery_filter,line_filter,year_filter,week_filter):
                         WHEN blackout_blackouts.label like "%_o" then 'Overtime'
                         Else 'Straight'
                         End as 'Shift_Type',
-                    
+
                     {}
 
-        
+
             FROM blackout_blackouts
 
             INNER JOIN
@@ -94,10 +94,10 @@ def main_blackout_call(bakery_filter,line_filter,year_filter,week_filter):
                 FROM blackout_blackouts
                 GROUP BY blackout_blackouts.bakery, blackout_blackouts.template_year) maxSub
 
-            ON 
-            blackout_blackouts.bakery = maxSub.bakery 
+            ON
+            blackout_blackouts.bakery = maxSub.bakery
 
-            AND 
+            AND
             blackout_blackouts.upload_date = maxSub.Latest_Sub
 
             AND
@@ -131,26 +131,26 @@ def main_blackout_call(bakery_filter,line_filter,year_filter,week_filter):
 ##SAVE FOR LATER
 
 month_sql = """
-SELECT final_table.bakery, final_table.line_name, final_table.months, 
+SELECT final_table.bakery, final_table.line_name, final_table.months,
 
         CASE
             WHEN final_table.weeks_in_month = 4 THEN 84-sum(shifts)
             ELSE 105-sum(shifts)
             END AS 'Monthly_Avail',
-            
-            final_table.upload_date AS "Latest Submission Date"         
+
+            final_table.upload_date AS "Latest Submission Date"
 FROM
 
         (SELECT *,
-    
+
                 CASE
                     WHEN second.months IN ('Month 03', 'Month 06', 'Month 09', 'Month 12') THEN 5
                     else 4
                     End As 'weeks_in_month'
-            
-        FROM 
+
+        FROM
             (SELECT *,
-                CASE                
+                CASE
                     WHEN blackout_blackouts.week_date BETWEEN '2015-12-27' and '2016-01-23' and blackout_blackouts.template_year=2016 THEN 'Month 01'
                 WHEN blackout_blackouts.week_date BETWEEN '2016-01-24' and '2016-02-20' and blackout_blackouts.template_year=2016 THEN 'Month 02'
                 WHEN blackout_blackouts.week_date BETWEEN '2016-02-21' and '2016-03-26' and blackout_blackouts.template_year=2016 THEN 'Month 03'
@@ -167,15 +167,15 @@ FROM
                 End As 'months'
 
             FROM blackout_blackouts) as second
-        
+
                                 ) AS final_table
 
 INNER JOIN
     (SELECT blackout_blackouts.bakery, MAX(blackout_blackouts.upload_date) AS Latest_Sub
     FROM blackout_blackouts
     GROUP BY blackout_blackouts.bakery) maxSub
-    
-ON 
+
+ON
 final_table.bakery = maxSub.bakery  AND  final_table.upload_date = maxSub.Latest_Sub
 
 GROUP BY

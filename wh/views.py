@@ -23,19 +23,19 @@ def login_user(request):
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect('/')
-    #return render_to_response('mdlzntw/login.html', context_instance=RequestContext(request))
-    return render(request,'mdlzntw/login.html')
+    #return render_to_response('wh/login.html', context_instance=RequestContext(request))
+    return render(request,'wh/login.html')
 
 
 @login_required(login_url='/login')
 def home(request):
 
-	return render(request, "mdlzntw/index.html", {})
+	return render(request, "wh/index.html", {})
 
 @login_required(login_url='/login')
 def network(request):
 
-	return render(request, "mdlzntw/index.html", {})
+	return render(request, "wh/index.html", {})
 
 
 def test(request):
@@ -52,4 +52,4 @@ def test(request):
 
 
 				}
-	return render(request, "mdlzntw/test.html", test_dict)
+	return render(request, "wh/test.html", test_dict)

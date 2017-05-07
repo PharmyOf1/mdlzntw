@@ -28,8 +28,8 @@ class Blackout_Template():
 
   def open_file(self):
     #Update to server path and use request.POST for file_name
-    path_to_file = (os.path.join((os.path.dirname(os.path.realpath(__file__))),'mdlzntw/media/'))
-    
+    path_to_file = (os.path.join((os.path.dirname(os.path.realpath(__file__))),'wh/media/'))
+
     #load file into memory and convert nums to integers
     check_names = openpyxl.load_workbook(path_to_file + self.file_name).get_sheet_names()
 
@@ -41,15 +41,15 @@ class Blackout_Template():
       #Salinas/Monterrey
       main_sheet = check_names[0]
 
-    
+
     blackout = pd.read_excel(path_to_file + self.file_name,sheetname=main_sheet,header=None)
     blackout.fillna(0,inplace=True)
     blackout.apply(pd.to_numeric, errors='ignore')
 
     return (blackout)
-  
+
   def prepare_for_upload(self,blackout):
-    
+
     #Lines Names from Column 1
     if self.bakery_name=='Montreal':
       names = ['Line 1','Line 2','Line 3', 'Line 5', 'DOYNE', 'Montreal 7B', 'Montreal 8', 'Montreal 00']
@@ -90,11 +90,11 @@ class Blackout_Template():
       for label, a in enumerate(active_line):
         [a.insert(0,x) for x in [self.labels[label],self.sub_month,self.sub_year,self.template_year,line,self.bakery_name]]
         standard, flip = a[:5],a[5:]
-  
+
         #Combine standards with label and input couples onto the active line list
         wrangle = [[flip[0],a] for a in flip if str(a) not in flip[0]]
 
-        #Add week numbers across to match up with shift  
+        #Add week numbers across to match up with shift
         for num, grouping in enumerate(wrangle):
           grouping.insert(0,weeks[num])
 
@@ -105,7 +105,7 @@ class Blackout_Template():
     return big_guy
 
 def breakout_excel_upload(file_name, bakery_name, template_year,sub_month):
-  
+
   BO = Blackout_Template(file_name, bakery_name, template_year,sub_month)
   opened_sheet = BO.open_file()
 
@@ -116,7 +116,7 @@ def call_raw_on_load(bakery_filter,line_filter,year_filter, week_filter):
 	#Raw Sql on initial load
 	from django.db import connection, transaction
 	cursor = connection.cursor()
-	
+
 	bakery_filter = (','.join((['"' + x + '"' for x in bakery_filter])))
 	line_filter = (','.join((['"' + x + '"' for x in line_filter])))
 	year_filter = (','.join((['"' + str(x) + '"' for x in year_filter])))
@@ -126,4 +126,3 @@ def call_raw_on_load(bakery_filter,line_filter,year_filter, week_filter):
 
 	row = cursor.fetchall()
 	return (row)
-

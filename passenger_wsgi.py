@@ -5,12 +5,12 @@ if sys.executable != INTERP: os.execl(INTERP, INTERP, *sys.argv)
 
 cwd = os.getcwd()
 sys.path.append(cwd)
-sys.path.append(cwd + '/mdlzntw') 
+sys.path.append(cwd + '/wh')
 
 sys.path.insert(0,cwd+'/data/bin')
 #sys.path.insert(0,cwd+'/data/lib/python3.5/site-packages/django')
 sys.path.insert(0,cwd+'/data/lib/python3.5/site-packages')
 
-os.environ['DJANGO_SETTINGS_MODULE'] = "mdlzntw.settings"
+os.environ['DJANGO_SETTINGS_MODULE'] = "wh.settings"
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
